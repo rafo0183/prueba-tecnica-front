@@ -1,0 +1,60 @@
+<div class="row" *ngIf="exportable">
+    <div class="col-xs-12 text-end">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn btn-success" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-file-earmark-excel"></i> Exportar
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><button class="dropdown-item" (click)="exportPage()">Página actual</button></li>
+                <li><button class="dropdown-item" (click)="exportPageFull()">Todo</button></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<table id="dataTable" class="table">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let column of columnsAttr; index as i; first as isFirst">
+                {{column.label}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of page.results; index as i; first as isFirst">
+            <td scope="col" *ngFor="let columnIn of columnsAttr; index as e;">
+                {{getColumnValue(columnIn, item)}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-xs-12 col-md-11">
+        <label class="form-label">Maximos encontrados {{page.totalRows}}</label>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item">
+                    <button [class.disabled]="page.currentPage==0" class="page-link"
+                        (click)="page.currentPage!=0 ? changePage(page.currentPage-1) : null;">Anterior</button>
+                </li>
+                <li class="page-item" *ngFor="let _ of [].constructor(page.maxPages); let i = index">
+                    <button [class.active]="page.currentPage==i" class="page-link"
+                        (click)="page.currentPage!=i ? changePage(i) : null;">{{i+1}}</button>
+                </li>
+                <li class="page-item">
+                    <button [class.disabled]="page.currentPage==page.maxPages-1" class="page-link"
+                        (click)="page.currentPage!=page.maxPages-1 ? changePage(page.currentPage+1) : null;">Siguiente</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-xs-12 col-md-1">
+        <label class="form-label">Resultados por página</label>
+        <select [(ngModel)]="page.rowsPerPage" class="form-control" (change)="changeSize()">
+            <option value="5">5</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+</div>

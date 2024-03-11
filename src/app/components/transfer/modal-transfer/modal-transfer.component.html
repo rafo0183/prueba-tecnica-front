@@ -1,0 +1,42 @@
+<div id="modalTransfer" class="modal fade" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Realizar transferencia</h5>
+                <button *ngIf="!transfering" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #modalTransClose></button>
+            </div>
+            <form #form="ngForm" (ngSubmit)="makeATransfer(form)">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nameDestination"  class="form-label">Nombre del destinatario</label>
+                        <input type="text" id="nameDestination" name="nameDestination" [(ngModel)]="iTransfer.nameDestination" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="bankDestination"  class="form-label">Banco del destinatario</label>
+                        <select   id="bankDestination" name="bankDestination" [(ngModel)]="iTransfer.bankDestination" class="form-control">
+                            <option value="Banco Ahorrador">Banco Ahorrador</option>
+                            <option value="Banco Estado">Banco Estado</option>
+                            <option value="Banco Credito e Inversiones">BCI</option>
+                            <option value="Banco Scotiabank">Scotiabank</option>
+                            <option value="Banco Citi">Citi Bank</option>
+                            <option value="Banco Santander">Santander</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="checkingAccountDestination"  class="form-label">Cuenta Corriente destino</label>
+                        <input type="number" id="checkingAccountDestination" name="checkingAccountDestination" [(ngModel)]="iTransfer.checkingAccountDestination" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount"  class="form-label">Monto</label>
+                        <input type="number" id="amount" name="amount" [(ngModel)]="iTransfer.amount" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button *ngIf="!transfering" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button *ngIf="!transfering" class="btn btn-primary" >Transferir</button>
+                    <button *ngIf="transfering" class="btn btn-primary" disabled >Transfiriendo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

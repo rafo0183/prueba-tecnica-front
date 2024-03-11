@@ -1,0 +1,46 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<app-modal-transfer></app-modal-transfer>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 mt-4 mb-4">
+                <h4>Transferencias</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-11">
+                <h5>Transferencias realizadas</h5>
+            </div>
+            <div class="col-xs-12 col-md-1">
+
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTransfer"><i class="fa-solid fa-money-bill-transfer"></i> Transferir</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Cuenta</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Banco destino</th>
+                    <th scope="col">Nombre destino</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Creación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of iTranfers; index as i; first as isFirst">
+                    <td>{{item.checkingAccount.accountNumber}}</td>
+                    <td>{{item.checkingAccountDestination}}</td>
+                    <td>{{item.bankDestination}}</td>
+                    <td>{{item.nameDestination}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.createdAt}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<app-modal-transfer></app-modal-transfer>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 mt-4 mb-4">
+                <h4>Transferencias Realizadas</h4>
+            </div>
+        </div>
+        <div class="row">
+            <app-table-paginable 
+                [columnsAttr]="columnsAttr"
+                [page]="ipage" 
+                [exportable]="true"
+                (changePageEmit)="changePage($event)"
+                (fillTableEmit)="fillTransferTable()" 
+                />
+        </div>
+    </div>
+</div>

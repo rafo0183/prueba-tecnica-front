@@ -1,0 +1,50 @@
+<div class="pt-4">
+    <a class="btn btn-sm btn-secondary" href="/login">Acceder</a>
+</div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center mb-4 pb-4">
+                            <img id="logon" src="/assets/bank_logon.svg" class="align-text-top">
+                            <span id="logontitle" class="ml-8">Banco Ahorrador</span>
+                        </div>
+                        <div class="col-xs-12">
+                            <p class="text-center">¡Crea tu cuenta corriente hoy completamente <b>gratis</b> y obten 5000 puntos!</p>
+                        </div>
+                    </div>
+                    <h3 class="card-title text-center">Crear tu cuenta corriente</h3>
+                    <form #form="ngForm" (ngSubmit)="openAccount(form)">
+                        <div class="mb-3">
+                            <label for="name"  class="form-label">Nombre</label>
+                            <input type="text" id="name" name="name" [(ngModel)]="iRegister.name" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastname"  class="form-label">Apellido</label>
+                            <input type="text" id="lastname" name="lastname" [(ngModel)]="iRegister.lastname" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email"  class="form-label">E-mail</label>
+                            <input type="text" id="email" name="email" [(ngModel)]="iRegister.email" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password"  class="form-label">Contraseña</label>
+                            <input type="password" id="password" name="password" [(ngModel)]="iRegister.password" class="form-control" />
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                            <b>Hubo un problema!</b>
+                            <p>Verifique que la información sea correcta</p>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button class="btn btn-primary btn-block">
+                                Crear cuenta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

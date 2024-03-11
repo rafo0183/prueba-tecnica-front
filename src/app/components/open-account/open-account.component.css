@@ -1,0 +1,9 @@
+#logon{
+    max-width: 100px;
+}
+
+#logontitle{
+    font-size: 34pt;
+    vertical-align: bottom;
+    font-family: fantasy;
+}

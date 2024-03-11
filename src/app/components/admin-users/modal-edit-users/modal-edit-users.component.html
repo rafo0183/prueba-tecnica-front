@@ -1,0 +1,60 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Editar usuario</h5>
+        <button *ngIf="!saving" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="close()"></button>
+    </div>
+    <form #form="ngForm" (ngSubmit)="editOrDeleteuser(form)">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" id="name" name="name" [(ngModel)]="userInEdition.name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Apellido</label>
+                <input type="text" id="lastname" name="lastname" [(ngModel)]="userInEdition.lastname"
+                    class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="text" id="email" name="email" [(ngModel)]="userInEdition.email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label><br />
+                <button class="btn btn-primary">Enviar cambio de contraseña</button>
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Rol</label>
+                <select id="role" name="role" [(ngModel)]="userInEdition.role" class="form-control">
+                    <option value="ADMIN">Administrador</option>
+                    <option value="CLIENT">Cliente</option>
+                    <option value="EXECUTIVE">Ejecutivo</option>
+                </select>
+            </div>
+            <div class="mb-3" class="border border-danger p-2 rounded">
+                <label class="form-label">Eliminar cuenta</label>
+                <div class="form-check">
+                    <input class="form-check-input danger" type="checkbox" id="deleteAccount" [(ngModel)]="deleteUser">
+                    <label class="form-check-label" for="deleteAccount">
+                        Borrar esta cuenta
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div>
+                    Fecha de creación
+                </div>
+                <div>
+                    {{userInEdition.createdAt}}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="!saving" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                (click)="close()">Cancelar</button>
+            <button *ngIf="!saving && !deleteUser" class="btn btn-primary">Guardar</button>
+            <button *ngIf="deleteUser" class="btn btn-primary" disabled>Eliminar permanentemente</button>
+            <button *ngIf="saving && !deleteUser" class="btn btn-primary" disabled>Guardando</button>
+        </div>
+    </form>
+</div>
