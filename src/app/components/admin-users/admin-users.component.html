@@ -17,6 +17,7 @@
                     <th scope="col">Apellido</th>
                     <th scope="col">Última actualización</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Estado</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -27,6 +28,10 @@
                     <td>{{item.lastname}}</td>
                     <td>{{item.updatedAt}}</td>
                     <td>{{item.role}}</td>
+                    <td>
+                      <div *ngIf="item.isDeleted" class="badge rounded-pill text-bg-danger">Desactiva</div>
+                      <div *ngIf="!item.isDeleted" class="badge rounded-pill text-bg-success">Activo</div>
+                    </td>
                     <td>
                         <div>
                             <button class="btn btn-success" (click)="editUser(item)"><i class="bi bi-pencil-square"></i></button>

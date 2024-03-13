@@ -19,10 +19,6 @@ export class NavbarComponent {
           url : '/transfer-made'
         },
         {
-          label : 'Stock de productos',
-          url : '/articles-stock'
-        },
-        {
           label : 'Administrar usuarios',
           url : '/admin-users'
         },
@@ -34,10 +30,6 @@ export class NavbarComponent {
         {
           label : 'Transferencias',
           url : '/transfer'
-        },
-        {
-          label : 'Créditos',
-          url : '/credits'
         },
         {
           label : 'Puntos',

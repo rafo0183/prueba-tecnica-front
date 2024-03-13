@@ -11,7 +11,7 @@ import { IUser } from 'src/app/models/iuser';
 export class ModalEditUsersComponent {
   userInEdition : IUser 
   saving : Boolean = false
-  deleteUser: Boolean = false
+  deletingUser: Boolean = false
   
   constructor(
     private apiService : ApiServices,
@@ -23,6 +23,7 @@ export class ModalEditUsersComponent {
       password: '',
       name: '',
       lastname: '',
+      isDeleted: false,
       createdAt: new Date,
       updatedAt: new Date,
       role: ''
@@ -34,6 +35,27 @@ export class ModalEditUsersComponent {
   }
 
   editOrDeleteuser(form : any) : void{
-    alert('Lo siento, esto aún no está listo :/')
+    console.log('userInEdition',this.userInEdition)
+
+
+    if(this.userInEdition.isDeleted){
+      this.deletingUser=true
+    }else{
+      this.saving = true
+    }
+
+    this.apiService.saveUser(this.userInEdition).subscribe({
+      next : (res) => {
+        console.log('login res', res)
+        location.reload()
+      },
+      error : (err) =>{
+        console.log('Error login', err)
+        this.deletingUser=false
+        this.saving = false
+        alert('Hubo un error....')
+      }
+    })
   }
 }
+

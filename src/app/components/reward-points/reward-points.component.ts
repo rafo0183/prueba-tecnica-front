@@ -29,6 +29,7 @@ export class RewardPointsComponent  implements OnInit{
     password: '',
     name: '',
     lastname: '',
+    isDeleted: false,
     createdAt: new Date,
     updatedAt: new Date,
     role: ''

@@ -13,15 +13,15 @@
                     <form #form="ngForm" (ngSubmit)="login(form)">
                         <div class="mb-3">
                             <label for="email"  class="form-label">E-mail</label>
-                            <input type="text" id="email" name="email" [(ngModel)]="ilogin.email" class="form-control" />
+                            <input type="email" id="email" name="email" [(ngModel)]="ilogin.email" class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label for="password"  class="form-label">Contraseña</label>
                             <input type="password" id="password" name="password" [(ngModel)]="ilogin.password" class="form-control" />
                         </div>
                         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-                            <b>Hubo un problema!</b>
-                            <p>Verifique que la información sea correcta</p>
+                            <b>Ups!</b>
+                            <p>Parece que te has equivocado en la contraseña o e-mail</p>
                         </div>
                         <div class="mb-3 text-center">
                             <button class="btn btn-primary btn-block ">

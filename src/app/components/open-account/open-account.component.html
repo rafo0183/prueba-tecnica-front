@@ -16,22 +16,58 @@
                         </div>
                     </div>
                     <h3 class="card-title text-center">Crear tu cuenta corriente</h3>
-                    <form #form="ngForm" (ngSubmit)="openAccount(form)">
+                    <form (ngSubmit)="openAccount()" [formGroup]="formControl">
                         <div class="mb-3">
                             <label for="name"  class="form-label">Nombre</label>
-                            <input type="text" id="name" name="name" [(ngModel)]="iRegister.name" class="form-control" />
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                [(ngModel)]="iRegister.name" 
+                                class="form-control" 
+                                formControlName="name"/>
+                        </div>
+                        <div *ngIf="activateInvalids && formControl.controls.name.status === 'INVALID'" class="bg-danger-subtle px-2 py-2 text-danger">
+                            Ingrese un nombre válido
                         </div>
                         <div class="mb-3">
                             <label for="lastname"  class="form-label">Apellido</label>
-                            <input type="text" id="lastname" name="lastname" [(ngModel)]="iRegister.lastname" class="form-control" />
+                            <input 
+                                type="text" 
+                                id="lastname" 
+                                name="lastname" 
+                                [(ngModel)]="iRegister.lastname" 
+                                class="form-control" 
+                                formControlName="lastname"/>
+                        </div>
+                        <div *ngIf="activateInvalids && formControl.controls.lastname.status === 'INVALID'" class="bg-danger-subtle px-2 py-2 text-danger">
+                            Ingrese un nombre válido
                         </div>
                         <div class="mb-3">
                             <label for="email"  class="form-label">E-mail</label>
-                            <input type="text" id="email" name="email" [(ngModel)]="iRegister.email" class="form-control" />
+                            <input 
+                                type="text" 
+                                id="email" 
+                                name="email" 
+                                [(ngModel)]="iRegister.email" 
+                                class="form-control" 
+                                formControlName="email"/>
+                        </div>
+                        <div *ngIf="activateInvalids && formControl.controls.email.status === 'INVALID'" class="bg-danger-subtle px-2 py-2 text-danger">
+                            Email inválido
                         </div>
                         <div class="mb-3">
                             <label for="password"  class="form-label">Contraseña</label>
-                            <input type="password" id="password" name="password" [(ngModel)]="iRegister.password" class="form-control" />
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                [(ngModel)]="iRegister.password" 
+                                class="form-control" 
+                                formControlName="password"/>
+                        </div>
+                        <div *ngIf="activateInvalids && formControl.controls.password.status === 'INVALID'" class="bg-danger-subtle px-2 py-2 text-danger">
+                            Contraseña inválida. Debe poseer al menos 4 caracteres
                         </div>
                         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                             <b>Hubo un problema!</b>

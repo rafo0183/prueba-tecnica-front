@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit{
     password: '',
     name: '',
     lastname: '',
+    isDeleted: false,
     createdAt: new Date,
     updatedAt: new Date,
     role: ''

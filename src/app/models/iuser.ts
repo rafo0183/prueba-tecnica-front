@@ -4,6 +4,7 @@ export interface IUser {
     password: string;
     name: string;
     lastname: string;
+    isDeleted: boolean;
     createdAt: Date;
     updatedAt: Date;
     role: string;
