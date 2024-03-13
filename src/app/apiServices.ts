@@ -6,6 +6,7 @@ import { IRegister } from "./models/iRegister";
 import { ITransfer } from "./models/iTransfer";
 import { IProduct } from "./models/iProduct";
 import { IPage } from "./models/iPage";
+import { IUser } from "./models/iuser";
 
 
 @Injectable({
@@ -143,6 +144,17 @@ export class ApiServices {
             const body = response.body
 
             return body
+        }))
+    }
+
+    saveUser(userInEdition : IUser){
+        return this.http.post(`http://localhost:8080/services/user/save-user`, userInEdition, {
+            observe: 'response'
+        }).pipe(map((response: HttpResponse<any>) => {
+            console.log('res arrives as', response)
+            const body = response.body
+            return body
+
         }))
     }
 }

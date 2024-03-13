@@ -8,7 +8,7 @@
                 <h4>Es bueno tenerte de regreso {{iUser.name}} </h4>
             </div>
         </div>
-        <div class="row text-center">
+        <div *ngIf="iUser.role!='ADMIN'" class="row text-center" >
             <div class="col-xs-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -36,6 +36,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div *ngIf="iUser.role=='ADMIN'" class="row text-primary" >
+            <h4>Se accedió como administrador</h4>
         </div>
     </div>
 </div>
